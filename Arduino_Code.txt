@@ -1,0 +1,133 @@
+#include <MAX30100_PulseOximeter.h>
+#include <OneWire.h>
+#include <DallasTemperature.h>
+#include <DHT.h>
+#include <WiFi.h>
+#include <WiFiClient.h>
+#include <ArduinoJson.h>
+
+#define DHTTYPE DHT11
+#define DHTPIN 18
+#define DS18B20 4
+#define ECG 34
+#define Lon 32
+#define Lop 33
+
+const char *ssid = "your_wifi_ssid";
+const char *password = "your_wifi_password";
+const char *serverIP = "server_hostname";
+const int serverPort = serverport;
+
+
+WiFiClient client;
+DHT dht(DHTPIN, DHTTYPE);
+PulseOximeter pox;
+OneWire oneWire(DS18B20);
+DallasTemperature sensors(&oneWire);
+
+void onBeatDetected() {
+  // Serial.println("Beat Detected!");
+}
+
+void setup() {
+  Serial.begin(115200);
+  delay(1000);
+
+  Serial.println("Connecting to WiFi...");
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(1000);
+    Serial.println("Connecting...");
+  }
+  Serial.println("Connected to WiFi");
+  
+  Serial.println("Connecting to server...");
+  Serial.println(serverIP);
+  if (client.connect(serverIP, serverPort)) {
+    Serial.println("Connected to server");
+    // You can send an initial message here if needed
+  } else {
+    Serial.println("Connection failed!");
+  }
+
+  dht.begin();
+  sensors.begin();
+  sensors.setResolution(12);
+  pinMode(Lon, INPUT);
+  pinMode(Lop, INPUT);
+
+  Serial.print("Initializing pulse oximeter..");
+  if (!pox.begin()) {
+    Serial.println("FAILED");
+  } else {
+    Serial.println("SUCCESS");
+    pox.setOnBeatDetectedCallback(onBeatDetected);
+  }
+  pox.setIRLedCurrent(MAX30100_LED_CURR_7_6MA);
+}
+
+
+
+void loop() {
+  float t, h, BPM, SpO2, bodytemperature, ecg;
+
+  if (digitalRead(Lop) == 1 || digitalRead(Lon) == 1) {
+    Serial.println("");
+  } else {
+    ecg = analogRead(ECG) / 100.0;
+    Serial.println(analogRead(ECG));
+  }
+
+  bodytemperature = sensors.getTempCByIndex(0);
+  sensors.setWaitForConversion(false);
+  sensors.requestTemperatures();
+  sensors.setWaitForConversion(true);
+  t = dht.readTemperature();
+  h = dht.readHumidity();
+  pox.update();
+  BPM = pox.getHeartRate();
+  SpO2 = pox.getSpO2();
+
+  ecg = roundf(ecg * 100) / 100;
+  SpO2 = roundf(SpO2 * 100) / 100;
+  BPM = roundf(BPM * 100) / 100;
+  t = roundf(t * 100) / 100;
+  h = roundf(h * 100) / 100;
+  bodytemperature = roundf(bodytemperature * 100) / 100;
+
+  DynamicJsonDocument doc(200);
+  doc["ECG"] = ecg;
+  doc["Spo2"] = SpO2;
+  doc["BPM"] = BPM;
+  doc["RoomTemperature"] = t;
+  doc["Humidity"] = h;
+  doc["BodyTemperature"] = bodytemperature;
+
+  String jsonString;
+  serializeJson(doc, jsonString);
+
+  if (!client.connected()) {
+    Serial.println("Attempting to reconnect to server...");
+    if (client.connect(serverIP, serverPort)) {
+      Serial.println("Reconnected to server");
+      // You can send an initial message here if needed
+    } else {
+      Serial.println("Reconnection failed!");
+      delay(10000); // Delay before retrying
+      return; // Exit loop to prevent sending data without a connection
+    }
+  }
+
+  if (client.connected()) {
+    client.println(jsonString);
+    Serial.println("Data sent to server: " + jsonString);
+  } else {
+    Serial.println("Error: Not connected to server!");
+    delay(10000);
+  }
+
+ delay(10000);
+}
+
+
+
