@@ -1,0 +1,49 @@
+
+.ip-connection-card {
+    width: 300px;
+    margin: 0 auto;
+    margin-top: 0px;
+    background-color: rgb(214, 240, 236);
+  }
+  .center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+   
+  }
+  
+  .input-field {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  button {
+    width: 100%;
+    margin-top: 20px;
+  }
+  body{
+    background-image: url(https://i.pinimg.com/originals/1a/ee/5c/1aee5c344846f449350feae457ea350e.jpg);
+    background-color: #cccccc; /* Used if the image is unavailable */
+      height: 100%; /* You must set a specified height */
+      background-position: center; /* Center the image */
+      background-repeat: no-repeat; /* Do not repeat the image */
+      background-size: cover; /* Resize the background image to cover the entire container */
+    }
+    
+      .mat-toolbar {
+        display: flex;
+        justify-content: space-between;
+      }
+      
+      .spacer {
+        flex: 1;
+      }
+      
+      mat-card{
+        background-color: rgb(214, 240, 236);
+      }
+      mat-card-content{
+        background-color: rgb(214, 240, 236);
+
+      }

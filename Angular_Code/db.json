@@ -1,0 +1,111 @@
+{
+  "user": [
+    {
+      "id": "admin",
+      "name": "NT Infotech",
+      "password": "Test$1234",
+      "email": "test@gmail.com",
+      "gender": "male",
+      "role": "admin",
+      "isactive": true,
+      "address": {
+        "area": "chennai"
+      }
+    },
+    {
+      "id": "sakshi",
+      "name": "sakshi",
+      "password": "Sakshi@123",
+      "email": "sak@gmail.com",
+      "gender": "female",
+      "role": "",
+      "isactive": true
+    },
+    {
+      "id": "abcdefg",
+      "name": "ABC",
+      "password": "Abc@12345",
+      "email": "abc@gmail.com",
+      "gender": "female",
+      "role": "",
+      "isactive": true
+    }
+  ],
+  "role": [
+    {
+      "code": "patient",
+      "name": "Patient"
+    },
+    {
+      "code": "receptionist",
+      "name": "Receptionist"
+    }
+  ],
+  "menu": [
+    {
+      "code": "user",
+      "name": "User"
+    },
+    {
+      "code": "customer",
+      "name": "Customer"
+    }
+  ],
+  "roleaccess": [
+    {
+      "role": "admin",
+      "menu": "user",
+      "haveedit": true,
+      "haveadd": true,
+      "havedelete": true
+    },
+    {
+      "role": "admin",
+      "menu": "customer",
+      "haveedit": true,
+      "haveadd": true,
+      "havedelete": true
+    },
+    {
+      "role": "user",
+      "menu": "user",
+      "haveedit": false,
+      "haveadd": false,
+      "havedelete": false
+    },
+    {
+      "role": "user",
+      "menu": "customer",
+      "haveedit": true,
+      "haveadd": true,
+      "havedelete": false
+    }
+  ],
+  "customer": [
+    {
+      "id": 1,
+      "name": "rakhesh",
+      "Creditlimit": 1000
+    },
+    {
+      "id": 2,
+      "name": "rahul",
+      "Creditlimit": 1000
+    },
+    {
+      "id": 3,
+      "name": "ramesh",
+      "Creditlimit": 1000
+    },
+    {
+      "id": 4,
+      "name": "rahim",
+      "Creditlimit": 1000
+    },
+    {
+      "id": 5,
+      "name": "robert",
+      "Creditlimit": 1000
+    }
+  ]
+}

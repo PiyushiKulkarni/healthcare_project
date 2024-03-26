@@ -1,0 +1,16 @@
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+mat-card {
+  width: 400px; /* Adjust the width as needed */
+  text-align: center;
+}
+button-container {
+  display: flex;
+  justify-content: center;
+  gap: 16px; /* Adjust the gap as needed */
+}

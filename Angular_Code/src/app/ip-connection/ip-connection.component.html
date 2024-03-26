@@ -1,0 +1,27 @@
+<body>
+  <mat-toolbar color="primary">
+    <span>Healthcare Monitoring System</span>
+    <span class="spacer"></span>
+    <a routerLink="/homepage" mat-raised-button color="accent">Logout</a>
+  </mat-toolbar>
+  <div class="center-container">
+<mat-card class="ip-connection-card">
+    <mat-card-header>
+      <mat-card-title>IP Connection</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field class="input-field">
+        <input matInput placeholder="IP address of NodeMCU"  [(ngModel)]="ipAddress" name="ipAddress" required>
+      </mat-form-field>
+  
+      <mat-form-field class="input-field">
+        <input matInput placeholder="Port number"  [(ngModel)]="portNumber" name="portNumber"  required>
+      </mat-form-field>
+  
+      <!-- <button mat-raised-button color="primary" (click)="connect()">Connect</button> -->
+      <button mat-raised-button color="primary" (click)="connect()" [disabled]="!isFormValid()">Connect</button>
+
+    </mat-card-content>
+  </mat-card>
+</div>
+</body>

@@ -1,0 +1,127 @@
+<body>
+  <mat-toolbar color="primary">
+    <span>Healthcare Monitoring System</span>
+    <span class="spacer"></span>
+    <a routerLink="/homepage" mat-raised-button color="accent">Logout</a>
+  </mat-toolbar>
+  <div class="main-container">
+  <div class="center-container">
+  
+    <!-- <div style="display: flex; justify-content: space-between;"></div> -->
+
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>BPM</mat-card-title>
+        <mat-card-title style="border: 1px solid black;" >{{ readings.BPM }}</mat-card-title>
+        <!-- <mat-card-subtitle>Normal</mat-card-subtitle> -->
+      </mat-card-header>
+      <!-- <mat-card-content>
+        <p>60 to 100 beats per minute</p>
+      </mat-card-content> -->
+      <!-- <mat-card-actions>
+        <button class="button" mat-button>Save</button>
+        <button class="button" mat-button>Check</button>
+        <button class="button" mat-button>Send</button>
+      </mat-card-actions> -->
+    </mat-card>
+
+
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>SPO2</mat-card-title>
+      <mat-card-title style="border: 1px solid black;">{{ readings.Spo2 }}</mat-card-title>
+      <!-- <mat-card-subtitle>Normal</mat-card-subtitle> -->
+    </mat-card-header>
+    <!-- <mat-card-content>
+      <p>95% to 100%</p>
+      
+    </mat-card-content> -->
+    <!-- <mat-card-actions>
+      <button class="button" mat-button>Save</button>
+      <button class="button" mat-button>Check</button>
+      <button class="button" mat-button>Send</button>
+
+    </mat-card-actions> -->
+  </mat-card>
+
+
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>Room Temperature</mat-card-title>
+      <mat-card-title style="border: 1px solid black;">{{ readings.RoomTemperature }}</mat-card-title>
+      <!-- <mat-card-subtitle>Normal</mat-card-subtitle> -->
+    </mat-card-header>
+    <!-- <mat-card-content>
+      <p>21 °C (69 °F)</p>
+     
+    </mat-card-content> -->
+    <!-- <mat-card-actions>
+      <button class="button" mat-button>Save</button>
+      <button class="button" mat-button>Check</button>
+      <button class="button" mat-button>Send</button>
+
+    </mat-card-actions> -->
+  </mat-card>
+
+
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>Body Temperature</mat-card-title>
+      <mat-card-title style="border: 1px solid black;">{{ readings.BodyTemperature }}</mat-card-title>
+      <!-- <mat-card-subtitle>Normal</mat-card-subtitle> -->
+    </mat-card-header>
+    <!-- <mat-card-content>
+      <p>98.6°F (37°C)</p>
+      
+    </mat-card-content> -->
+    <!-- <mat-card-actions>
+      <button class="button" mat-button>Save</button>
+      <button class="button" mat-button>Check</button>
+      <button class="button" mat-button>Send</button>
+
+    </mat-card-actions> -->
+  </mat-card>
+
+  
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>ECG</mat-card-title>
+      <mat-card-title style="border: 1px solid black;">{{ readings.ECG }}</mat-card-title>
+      <!-- <mat-card-subtitle>Normal</mat-card-subtitle> -->
+    </mat-card-header>
+    <!-- <mat-card-content>
+      <p>60 to 100 beats per minute.</p>
+      
+    </mat-card-content> -->
+    <!-- <mat-card-actions>
+      <button class="button" mat-button>Save</button>
+      <button class="button" mat-button>Check</button>
+      <button class="button" mat-button>Send</button>
+
+    </mat-card-actions> -->
+  </mat-card>
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>Humidity</mat-card-title>
+      <mat-card-title style="border: 1px solid black;">{{ readings.Humidity }}</mat-card-title>
+      <!-- <mat-card-subtitle>Normal</mat-card-subtitle> -->
+    </mat-card-header>
+    <!-- <mat-card-content>
+      <p>95</p>
+      
+    </mat-card-content> -->
+    <!-- <mat-card-actions>
+      <button class="button" mat-button>Save</button>
+      <button class="button" mat-button>Check</button>
+      <button class="button" mat-button>Send</button>
+
+    </mat-card-actions> -->
+  </mat-card>
+</div>
+<div class="button-container">
+  <button class="button" mat-button (click)="saveReadings()">Save</button>
+  <button class="button" mat-button >Check</button>
+  <button class="button" mat-button >Send</button>
+</div>
+</div>
+</body>

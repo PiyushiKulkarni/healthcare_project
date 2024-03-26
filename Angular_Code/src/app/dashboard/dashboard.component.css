@@ -1,0 +1,71 @@
+.example-card {
+  max-width: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 10px;
+  height: 150px;
+}
+
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh; /* Adjusted height */
+}
+
+mat-card {
+  width: 90%; /* Adjusted width for mobile */
+  justify-content: center;
+  text-align: center;
+  background-color: rgb(214, 240, 236);
+}
+
+.button {
+  border: solid rgb(171, 211, 206);
+  border-radius: 7px;
+}
+
+body {
+  background-color: #a9e5df;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.spacer {
+  flex: 1;
+}
+
+mat-card-content {
+  background-color: rgb(214, 240, 236);
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: -100px;
+}
+
+@media (max-width: 600px) {
+  /* Adjustments for mobile devices */
+  .center-container {
+    height: auto;
+  }
+  
+  .button-container {
+    margin-top: 0; /* Remove negative margin for mobile */
+    margin-bottom: 20px; /* Add space between cards and buttons for mobile */
+  }
+
+  mat-card {
+    width: 90%;
+    margin-bottom: 20px; /* Add space between cards for mobile */
+  }
+}
